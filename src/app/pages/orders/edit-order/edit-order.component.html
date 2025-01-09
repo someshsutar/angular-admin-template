@@ -1,0 +1,18 @@
+<h2>Edit Order</h2>
+<form (ngSubmit)="submitOrder()">
+  <mat-form-field>
+    <mat-label>Order ID</mat-label>
+    <input matInput [(ngModel)]="order.id" name="orderId" disabled />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="order.status" name="orderStatus" required>
+      <mat-option *ngFor="let status of statuses" [value]="status">{{ status }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [(ngModel)]="order.date" name="orderDate" type="date" required />
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Save</button>
+</form>
