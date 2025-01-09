@@ -7,7 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { TopBarComponent } from './layout/top-bar/top-bar.component';
 import { SideMenuComponent } from './layout/side-menu/side-menu.component';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -17,10 +17,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 import { AddOrderComponent } from './pages/orders/add-order/add-order.component';
 import { EditOrderComponent } from './pages/orders/edit-order/edit-order.component';
 import { ViewOrderComponent } from './pages/orders/view-order/view-order.component';
-
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,10 +45,21 @@ import { ViewOrderComponent } from './pages/orders/view-order/view-order.compone
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    TableModule
+    TableModule,
+    ButtonModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          prefix: 'p',
+          darkModeSelector: 'system',
+          cssLayer: false
+        }
+      }
+    })
   ],
   bootstrap: [AppComponent]
 })

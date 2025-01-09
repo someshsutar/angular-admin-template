@@ -27,9 +27,9 @@
         <td>{{ order.status }}</td>
         <td>{{ order.date }}</td>
         <td>
-          <button pButton icon="pi pi-eye" class="p-button-text" routerLink="/orders/view/{{order.id}}"></button>
-          <button pButton icon="pi pi-pencil" class="p-button-text" routerLink="/orders/edit/{{order.id}}"></button>
-          <button pButton icon="pi pi-trash" class="p-button-text" (click)="deleteOrder(order)"></button>
+            <button pButton icon="pi pi-eye" class="p-button-text" routerLink="/orders/view/{{ order.id }}"></button>
+            <button pButton icon="pi pi-pencil" class="p-button-text" routerLink="/orders/edit/{{ order.id }}"></button>
+            <button pButton icon="pi pi-trash" class="p-button-text" (click)="deleteOrder(order)"></button>
         </td>
       </tr>
     </ng-template>
