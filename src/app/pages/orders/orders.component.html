@@ -1,37 +1,31 @@
 <div class="search-form">
-    <mat-form-field>
-      <mat-label>Order ID</mat-label>
-      <input matInput placeholder="Search by Order ID" [(ngModel)]="filters.orderId" />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Status</mat-label>
-      <mat-select [(ngModel)]="filters.status">
-        <mat-option *ngFor="let status of statuses" [value]="status">{{ status }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="applyFilters()">Search</button>
-  </div>
-  
-  <p-table [value]="orders" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+    <p-inputText placeholder="Order ID" [(ngModel)]="filters.orderId"></p-inputText>
+    <p-dropdown [options]="statuses" [(ngModel)]="filters.status" placeholder="Select Status"></p-dropdown>
+    <button pButton label="Search" (click)="applyFilters()"></button>
+    <button pButton label="Add New Order" icon="pi pi-plus" routerLink="/orders/add"></button>
+</div>
+
+<p-table [value]="orders" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
     <ng-template pTemplate="header">
-      <tr>
-        <th>Order ID</th>
-        <th>Status</th>
-        <th>Date</th>
-        <th>Actions</th>
-      </tr>
+        <tr>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
     </ng-template>
     <ng-template pTemplate="body" let-order>
-      <tr>
-        <td>{{ order.id }}</td>
-        <td>{{ order.status }}</td>
-        <td>{{ order.date }}</td>
-        <td>
-            <button pButton icon="pi pi-eye" class="p-button-text" routerLink="/orders/view/{{ order.id }}"></button>
-            <button pButton icon="pi pi-pencil" class="p-button-text" routerLink="/orders/edit/{{ order.id }}"></button>
-            <button pButton icon="pi pi-trash" class="p-button-text" (click)="deleteOrder(order)"></button>
-        </td>
-      </tr>
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.date }}</td>
+            <td>
+                <button pButton icon="pi pi-eye" class="p-button-text"
+                    routerLink="/orders/view/{{ order.id }}"></button>
+                <button pButton icon="pi pi-pencil" class="p-button-text"
+                    routerLink="/orders/edit/{{ order.id }}"></button>
+                <button pButton icon="pi pi-trash" class="p-button-text" (click)="deleteOrder(order)"></button>
+            </td>
+        </tr>
     </ng-template>
-  </p-table>
-  
+</p-table>
